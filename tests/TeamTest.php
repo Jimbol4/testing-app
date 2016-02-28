@@ -47,6 +47,16 @@ class TeamTest extends TestCase
     }
     
     /** @test */
+    public function when_adding_many_members_at_once_you_still_may_not_exceed_the_team_maximum_size() {
+        $team = factory(Team::class)->create(['size' => 2]);
+        
+        $users = factory(User::class, 3)->create();
+        
+        $this->setExpectedException('Exception');
+        $team->add($users);
+    }
+    
+    /** @test */
     public function a_team_can_add_multiple_members_at_once() {
         $team = factory(Team::class)->create();
         
@@ -56,5 +66,47 @@ class TeamTest extends TestCase
         
         $this->assertEquals(2, $team->count());
         
+    }
+    
+    /** @test */
+    public function a_team_can_remove_a_member() {
+        $team = factory(Team::class)->create(['size' => 2]);
+        
+        $userOne = factory(User::class)->create();
+        $userTwo = factory(User::class)->create();
+        
+        $team->add($userOne);
+        $team->add($userTwo);
+        
+        $team->remove($userOne);
+        
+        $this->assertEquals(1, $team->count());
+    }
+    
+    /** @test */ 
+    public function a_team_can_remove_multiple_members_at_once() {
+        $team = factory(Team::class)->create();
+        
+        $users = factory(User::class, 2)->create();
+        $team->add($users);
+        
+        $team->removeMany($users->slice(0,2));
+        
+        $this->assertEquals(0, $team->count());
+    }
+    
+    /** @test */
+    public function a_team_can_remove_all_members_at_once() {
+        $team = factory(Team::class)->create(['size' => 2]);
+        
+        $userOne = factory(User::class)->create();
+        $userTwo = factory(User::class)->create();
+        
+        $team->add($userOne);
+        $team->add($userTwo);
+        
+        $team->clear();
+        
+        $this->assertEquals(0, $team->count());
     }
 }

@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/testing-app/resources/views/welcome.blade.php</file>
-            <file>file:/C:/wamp/www/testing-app/app/Http/routes.php</file>
-            <file>file:/C:/wamp/www/testing-app/tests/ExampleTest.php</file>
+            <file>file:/C:/code/testing-app/app/User.php</file>
+            <file>file:/C:/code/testing-app/tests/integration/models/ArticleTest.php</file>
+            <file>file:/C:/code/testing-app/app/Team.php</file>
+            <file>file:/C:/code/testing-app/tests/TeamTest.php</file>
+            <file>file:/C:/code/testing-app/database/migrations/2014_10_12_000000_create_users_table.php</file>
         </group>
     </open-files>
 </project-private>
